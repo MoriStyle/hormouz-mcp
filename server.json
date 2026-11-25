@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "net.hormouz/mcp",
+  "title": "Hormouz",
+  "description": "Read your Hormouz (unified AI API) balance, keys and usage. Read-only, cannot spend.",
+  "version": "0.1.1",
+  "repository": {
+    "url": "https://github.com/MoriStyle/hormouz-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://docs.hormouz.net/guides/mcp",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.hormouz.net/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <your Hormouz read-only account key, scope account:read>. Make one in the dashboard (Keys -> Create -> Read-only account key); it cannot spend.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
