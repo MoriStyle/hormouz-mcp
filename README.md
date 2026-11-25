@@ -1,5 +1,7 @@
 # Hormouz MCP
 
+[![Hormouz MCP connector](https://glama.ai/mcp/connectors/net.hormouz/mcp/badges/score.svg)](https://glama.ai/mcp/connectors/net.hormouz/mcp)
+
 A read-only MCP server for [Hormouz](https://hormouz.net) customers. It lets an AI assistant — Claude, Cursor, or any MCP client — read your Hormouz account in plain language: balance, API-key status, usage statistics and request logs. It also walks you through connecting a coding or chat client.
 
 It is **read-only**. It never calls a model and never spends credit, so the key you give it is safe to paste into a client — the worst a leak can do is let someone read your usage, not spend your money.
