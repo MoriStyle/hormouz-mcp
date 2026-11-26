@@ -4,7 +4,18 @@
 
 A read-only MCP server for [Hormouz](https://hormouz.net) customers. It lets an AI assistant — Claude, Cursor, or any MCP client — read your Hormouz account in plain language: balance, API-key status, usage statistics and request logs. It also walks you through connecting a coding or chat client.
 
-It is **read-only**. It never calls a model and never spends credit, so the key you give it is safe to paste into a client — the worst a leak can do is let someone read your usage, not spend your money.
+It is **read-only**. It never calls a model, never spends credit and cannot change anything on your account.
+
+### What a read-only key can see
+
+The key has scope `account:read`, which reads the **whole account**. If it leaks, whoever holds it can see:
+
+- **Balance:** current balance, credit line, and spend today and this month.
+- **API keys:** every key's name, prefix (the first characters only), status, scopes, limits, allowed models and spend.
+- **Request logs:** for each request, the time, model, API shape, status, tokens, cost, duration, request ID and the prefix of the key that made it.
+- **Usage statistics:** spend, requests and tokens grouped by day, month, model, key or API shape.
+
+It **cannot** see prompt or response content, full key secrets, or your email and phone number. It also cannot spend credit, call a model, or create, change or revoke keys. Treat it like any credential: keep it private, and revoke it in the dashboard if it leaks.
 
 > **What is Hormouz?** A unified AI API: reach many leading AI models — chat, coding, images, audio — through one fast, reliable, OpenAI-compatible API, and pay for all of them in one place.
 
@@ -36,7 +47,7 @@ claude mcp add --transport http hormouz https://api.hormouz.net/mcp \
 
 ## Tools
 
-All nine are read-only.
+All nine are read-only. The full [`tools/list`](./tools-list.json) response is in this repo; it was captured from the live server with a test `account:read` key (the key itself is not published).
 
 | Tool | What it returns |
 |---|---|

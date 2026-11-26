@@ -1,0 +1,174 @@
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "ttlMs": 0,
+    "cacheScope": "public",
+    "tools": [
+      {
+        "description": "Get the account's current balance, credit line and spend today/this month (USD).",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "name": "get_balance"
+      },
+      {
+        "description": "Get step-by-step instructions to set up DeepSeek Harness (or a generic client) for chat on Hormouz (api.hormouz.net/v1). The output tells you to ask the user's permission before installing anything and gives the download URL.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "client": {
+              "type": "string",
+              "description": "which client: 'deepseek-harness' (default) or 'generic'"
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": "get_chat_setup"
+      },
+      {
+        "description": "Get step-by-step instructions to connect a coding client to Hormouz Code (codeapi.hormouz.net/v1).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "client": {
+              "type": "string",
+              "description": "which client: 'deepseek-harness' (default) or 'generic'"
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": "get_code_setup"
+      },
+      {
+        "description": "Get the Hormouz base URLs (chat and Hormouz Code), how to authenticate, and the docs links.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "name": "get_connection_info"
+      },
+      {
+        "description": "Get the status, limits and spend of the API key making this call.",
+        "inputSchema": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "name": "get_key"
+      },
+      {
+        "description": "List individual request logs (model, status, tokens, cost), newest first. Default last 24h, max 30-day span, 90-day age.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "start time RFC3339 or YYYY-MM-DD (default 24h ago)"
+            },
+            "to": {
+              "type": "string",
+              "description": "end time RFC3339 or YYYY-MM-DD (default now)"
+            },
+            "status": {
+              "type": "string",
+              "description": "filter: settled, failed, pending or all"
+            },
+            "model": {
+              "type": "string",
+              "description": "filter to one model id"
+            },
+            "key_id": {
+              "type": "string",
+              "description": "filter to one API key id"
+            },
+            "cursor": {
+              "type": "string",
+              "description": "opaque next_cursor from a previous call"
+            },
+            "limit": {
+              "type": "string",
+              "description": "page size, 1-100 (default 25)"
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": "get_usage_logs"
+      },
+      {
+        "description": "Get grouped usage statistics (spend, requests, tokens) over a date range, from the daily summaries.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "start date YYYY-MM-DD (default first of this month)"
+            },
+            "to": {
+              "type": "string",
+              "description": "end date YYYY-MM-DD (default today)"
+            },
+            "group_by": {
+              "type": "string",
+              "description": "one or two of: day, month, model, key, api_shape (comma-separated; default day)"
+            },
+            "model": {
+              "type": "string",
+              "description": "filter to one model id"
+            },
+            "api_shape": {
+              "type": "string",
+              "description": "filter to one API shape, e.g. chat_completions"
+            },
+            "key_id": {
+              "type": "string",
+              "description": "filter to one API key id"
+            },
+            "limit": {
+              "type": "string",
+              "description": "max rows, 1-500 (default 100)"
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": "get_usage_stats"
+      },
+      {
+        "description": "List all API keys on the account (status, limits, spend), newest first, cursor-paginated.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "description": "filter by key state: active (default), disabled or all"
+            },
+            "limit": {
+              "type": "string",
+              "description": "page size, 1-50 (default 25)"
+            },
+            "cursor": {
+              "type": "string",
+              "description": "opaque next_cursor from a previous call"
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": "list_keys"
+      },
+      {
+        "description": "List the models available to this key, in OpenAI /v1/models shape.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "api_shape": {
+              "type": "string",
+              "description": "filter to one API shape, e.g. chat_completions"
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": "list_models"
+      }
+    ]
+  }
+}
