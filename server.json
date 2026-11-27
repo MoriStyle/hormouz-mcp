@@ -5,7 +5,7 @@
   "description": "Read your Hormouz (unified AI API) balance, keys and usage. Read-only, cannot spend.",
   "version": "0.1.1",
   "repository": {
-    "url": "https://github.com/MoriStyle/hormouz-mcp",
+    "url": "https://github.com/hormouz/hormouz-mcp",
     "source": "github"
   },
   "websiteUrl": "https://docs.hormouz.net/guides/mcp",
